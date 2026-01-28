@@ -18,16 +18,3 @@ Theme toggle persists in `localStorage`.
 ## Run locally
 Because the site uses `fetch()` to load JSON, you must serve it (opening the HTML file directly may fail).
 
-### Option A: VS Code Live Server
-Right-click `index.html` → **Open with Live Server**
-
-### Option B: Python
-```bash
-python -m http.server 8000
-```
-Then open `http://localhost:8000`
-
-## Deploy (GitHub Pages)
-1. Push this folder to a GitHub repo.
-2. Repo Settings → Pages → Deploy from branch → select `main` and `/ (root)`.
-3. Your site will be available on GitHub Pages.
