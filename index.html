@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Today • Food Log</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="color-scheme" content="dark light">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span class="brand__text">Food Log</span>
+      </div>
+
+      <nav class="nav">
+        <a class="nav__link nav__link--active" href="index.html">Today</a>
+        <a class="nav__link" href="week.html">Week</a>
+      </nav>
+
+      <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <span class="icon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-head">
+      <h1 id="todayTitle" class="page-title">Today</h1>
+      <p class="page-subtitle" id="todaySubtitle">Loading…</p>
+    </section>
+
+    <section class="grid">
+      <div class="card">
+        <div class="card__head">
+          <h2 class="card__title">Meals</h2>
+          <div class="pill-row" id="todayTotals"></div>
+        </div>
+
+        <div id="mealsList" class="list"></div>
+      </div>
+
+      <div class="card">
+        <div class="card__head">
+          <h2 class="card__title">Supplements</h2>
+          <p class="card__hint">Daily stack</p>
+        </div>
+        <div id="suppList" class="list"></div>
+      </div>
+    </section>
+
+    <footer class="footer">
+      <span id="dataSourceNote" class="muted"></span>
+    </footer>
+  </main>
+
+  <!-- Description modal -->
+  <div id="modal" class="modal" aria-hidden="true">
+    <div class="modal__backdrop" data-close="true"></div>
+    <div class="modal__dialog" role="dialog" aria-modal="true" aria-labelledby="modalTitle">
+      <div class="modal__head">
+        <h3 id="modalTitle" class="modal__title">Description</h3>
+        <button class="icon-btn" type="button" data-close="true" aria-label="Close">
+          <span class="icon" aria-hidden="true">✕</span>
+        </button>
+      </div>
+      <div id="modalBody" class="modal__body"></div>
+      <div class="modal__foot">
+        <button class="btn" type="button" data-close="true">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <script src="app.js"></script>
+  <script>
+    window.APP_PAGE = "today";
+  </script>
+</body>
+</html>

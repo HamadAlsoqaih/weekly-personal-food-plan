@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Week • Food Log</title>
+  <link rel="stylesheet" href="styles.css" />
+  <meta name="color-scheme" content="dark light">
+</head>
+<body>
+  <header class="topbar">
+    <div class="topbar__inner">
+      <div class="brand">
+        <span class="brand__dot" aria-hidden="true"></span>
+        <span class="brand__text">Food Log</span>
+      </div>
+
+      <nav class="nav">
+        <a class="nav__link" href="index.html">Today</a>
+        <a class="nav__link nav__link--active" href="week.html">Week</a>
+      </nav>
+
+      <button id="themeToggle" class="icon-btn" type="button" aria-label="Toggle theme" title="Toggle theme">
+        <span class="icon" aria-hidden="true">🌙</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="page-head">
+      <h1 class="page-title">Week</h1>
+      <p class="page-subtitle" id="weekSubtitle">Loading…</p>
+      <div class="pill-row" id="weekSummary"></div>
+    </section>
+
+    <!-- Top overview: days + meal names -->
+    <section class="card">
+      <div class="card__head">
+        <h2 class="card__title">Overview</h2>
+        <p class="card__hint">Days + meals (no descriptions here)</p>
+      </div>
+      <div id="weekOverview" class="overview-grid"></div>
+    </section>
+
+    <!-- Details: descriptions shown under each meal -->
+    <section class="card">
+      <div class="card__head">
+        <h2 class="card__title">Details</h2>
+        <p class="card__hint">Descriptions under each meal</p>
+      </div>
+      <div id="weekDetails" class="details"></div>
+    </section>
+
+    <footer class="footer">
+      <span id="dataSourceNote" class="muted"></span>
+    </footer>
+  </main>
+
+  <script src="app.js"></script>
+  <script>
+    window.APP_PAGE = "week";
+  </script>
+</body>
+</html>
