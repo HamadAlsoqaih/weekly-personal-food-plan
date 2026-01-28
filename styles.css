@@ -220,7 +220,36 @@ body{
 }
 .icon-btn:hover{ filter: brightness(1.05); }
 .icon-btn:focus{ outline: 3px solid var(--focus); outline-offset: 2px; }
-.icon{ font-size: 14px; line-height: 1; }
+.icon{ width:18px; height:18px; display:block; }
+
+/* checkbox */
+.check{ display:inline-flex; align-items:flex-start; padding-top: 2px; }
+.check input{ position:absolute; opacity:0; width:1px; height:1px; }
+.check__box{
+  width: 18px;
+  height: 18px;
+  border-radius: 6px;
+  border: 1px solid var(--border);
+  background: var(--pill);
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  flex: 0 0 auto;
+}
+.check input:focus + .check__box{ outline: 3px solid var(--focus); outline-offset: 2px; }
+.check input:checked + .check__box{
+  background: color-mix(in srgb, var(--accent) 18%, var(--pill));
+  border-color: color-mix(in srgb, var(--accent) 35%, var(--border));
+}
+.check input:checked + .check__box::after{
+  content: "";
+  width: 10px;
+  height: 6px;
+  border-left: 2px solid var(--text);
+  border-bottom: 2px solid var(--text);
+  transform: rotate(-45deg);
+  margin-top: -1px;
+}
 
 .btn{
   appearance:none;
@@ -265,20 +294,14 @@ body{
   font-size: 14px;
   margin:0;
 }
-.day-card__meals{
-  margin: 0;
+.day-card__list{
+  margin: 10px 0 0;
+  padding-left: 18px;
   color: var(--muted);
   font-size: 12px;
   line-height: 1.35;
 }
-.day-card__meals span{
-  display:inline-block;
-  margin-right: 6px;
-  padding: 3px 8px;
-  border-radius: 999px;
-  background: var(--pill);
-  border: 1px solid var(--border);
-}
+.day-card__list li{ margin: 4px 0; }
 
 .details{
   display:flex;

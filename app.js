@@ -1,6 +1,58 @@
 /* ========= Utilities ========= */
 const FOOD_URL = "data/food_log.json";
 const SUPP_URL = "data/supplements.json";
+
+/* ========= Check state (meals + supplements) ========= */
+const CHECKS_KEY = "foodlog_checks_v1";
+function loadChecks() {
+  try {
+    return JSON.parse(localStorage.getItem(CHECKS_KEY) || "{}");
+  } catch {
+    return {};
+  }
+}
+function saveChecks(obj) {
+  try {
+    localStorage.setItem(CHECKS_KEY, JSON.stringify(obj));
+  } catch {}
+}
+function makeCheckKey(kind, day, id) {
+  return `${kind}|${day || ""}|${id || ""}`;
+}
+function createCheck(kind, day, id) {
+  const key = makeCheckKey(kind, day, id);
+  const checks = loadChecks();
+
+  const wrap = document.createElement("label");
+  wrap.className = "check";
+
+  const input = document.createElement("input");
+  input.type = "checkbox";
+  input.checked = !!checks[key];
+
+  const box = document.createElement("span");
+  box.className = "check__box";
+  box.setAttribute("aria-hidden", "true");
+
+  input.addEventListener("change", () => {
+    const next = loadChecks();
+    next[key] = input.checked;
+    saveChecks(next);
+  });
+
+  wrap.append(input, box);
+  return wrap;
+}
+
+function infoIconSvg() {
+  // lightweight inline SVG, avoids emoji rendering differences
+  return `
+    <svg class="icon" viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+      <circle cx="12" cy="12" r="10" fill="none" stroke="currentColor" stroke-width="2" />
+      <path d="M12 10.5v6" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" />
+      <circle cx="12" cy="7.5" r="1" fill="currentColor" />
+    </svg>`;
+}
 const THEME_KEY = "foodlog_theme"; // 'dark' | 'light'
 
 function fmtNum(n) {
@@ -124,6 +176,8 @@ function renderToday(food, supp) {
       const item = document.createElement("div");
       item.className = "item";
 
+      const check = createCheck("meal", dayObj.day, m.meal || m.name);
+
       const main = document.createElement("div");
       main.className = "item__main";
 
@@ -145,7 +199,7 @@ function renderToday(food, supp) {
       btn.className = "icon-btn";
       btn.type = "button";
       btn.setAttribute("aria-label", "Show description");
-      btn.innerHTML = `<span class="icon" aria-hidden="true">➜</span>`;
+      btn.innerHTML = infoIconSvg();
 
       btn.addEventListener("click", () => {
         if (!modal) return;
@@ -155,7 +209,7 @@ function renderToday(food, supp) {
         });
       });
 
-      item.append(main, btn);
+      item.append(check, main, btn);
       mealsList.append(item);
     }
   }
@@ -174,6 +228,8 @@ function renderToday(food, supp) {
       for (const s of arr) {
         const item = document.createElement("div");
         item.className = "item";
+
+        const check = createCheck("supp", "today", s.name);
 
         const main = document.createElement("div");
         main.className = "item__main";
@@ -195,8 +251,27 @@ function renderToday(food, supp) {
         desc.className = "item__desc";
         desc.textContent = supplementDoseText(s);
 
+        const btn = document.createElement("button");
+        btn.className = "icon-btn";
+        btn.type = "button";
+        btn.setAttribute("aria-label", "Show supplement details");
+        btn.innerHTML = infoIconSvg();
+
+        btn.addEventListener("click", () => {
+          if (!modal) return;
+          const body = [
+            s.form ? `Form: ${s.form}` : null,
+            s.serving ? `Serving: ${formatServing(s.serving)}` : null,
+            supplementDoseText(s)
+          ].filter(Boolean).join("\n");
+          modal.open({
+            title: s.name || "Supplement",
+            body
+          });
+        });
+
         main.append(h, meta, desc);
-        item.append(main);
+        item.append(check, main, btn);
         suppList.append(item);
       }
     }
@@ -219,6 +294,13 @@ function supplementDoseText(s) {
   return parts.join(" • ") || "—";
 }
 
+function formatServing(serving) {
+  if (!serving) return "—";
+  if (serving.count) return `${serving.count} ${serving.unit || ""}`.trim();
+  if (serving.amount_g) return `${fmtNum(serving.amount_g)} ${serving.unit || "g"}`.trim();
+  return "—";
+}
+
 /* ========= Render: Week ========= */
 function renderWeek(food) {
   const subtitle = document.getElementById("weekSubtitle");
@@ -226,13 +308,18 @@ function renderWeek(food) {
 
   // Weekly summary pills
   const sum = food.weekly_summary || {};
+  const days = food.days || [];
+  const weeklyCalories = (sum.weekly_total_calories_calculated ?? sum.weekly_total_calories_reported ?? sum.weekly_total_calories);
+  const avgDayCalories = (sum.average_daily_calories_calculated ?? sum.average_daily_calories_reported ?? sum.average_daily_calories);
+  const weeklyProtein = days.reduce((acc, d) => acc + (Number(d.daily_total_protein_g) || 0), 0);
+  const avgDayProtein = (sum.average_daily_protein_g_calculated ?? (weeklyProtein / Math.max(days.length, 1)));
   const weekSummary = document.getElementById("weekSummary");
   if (weekSummary) {
     weekSummary.replaceChildren(
-      pill("weekly kcal", fmtNum(sum.weekly_total_calories)),
-      pill("avg/day kcal", fmtNum(sum.average_daily_calories)),
-      pill("weekly protein g", fmtNum(sum.weekly_total_protein_g)),
-      pill("avg/day protein g", fmtNum(sum.average_daily_protein_g))
+      pill("weekly kcal", fmtNum(weeklyCalories)),
+      pill("avg/day kcal", fmtNum(avgDayCalories)),
+      pill("weekly protein g", fmtNum(weeklyProtein)),
+      pill("avg/day protein g", fmtNum(avgDayProtein))
     );
   }
 
@@ -260,20 +347,23 @@ function renderWeek(food) {
 
       head.append(day, pills);
 
-      const mealsP = document.createElement("p");
-      mealsP.className = "day-card__meals";
       const names = (d.meals || []).map(m => m.name).filter(Boolean);
+      const list = document.createElement("ul");
+      list.className = "day-card__list";
       if (!names.length) {
-        mealsP.textContent = "No meals.";
+        const li = document.createElement("li");
+        li.className = "muted";
+        li.textContent = "No meals.";
+        list.append(li);
       } else {
         for (const n of names) {
-          const chip = document.createElement("span");
-          chip.textContent = n;
-          mealsP.append(chip);
+          const li = document.createElement("li");
+          li.textContent = n;
+          list.append(li);
         }
       }
 
-      card.append(head, mealsP);
+      card.append(head, list);
       ov.append(card);
     }
   }
@@ -309,6 +399,8 @@ function renderWeek(food) {
         const item = document.createElement("div");
         item.className = "item";
 
+        const check = createCheck("meal", d.day, m.meal || m.name);
+
         const main = document.createElement("div");
         main.className = "item__main";
 
@@ -329,7 +421,7 @@ function renderWeek(food) {
         desc.textContent = m.description || "—";
 
         main.append(title, meta, desc);
-        item.append(main);
+        item.append(check, main);
         list.append(item);
       }
 
