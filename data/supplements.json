@@ -1,0 +1,59 @@
+{
+  "supplements": [
+    {
+      "name": "Fish Oil Concentrate",
+      "form": "Softgel (Triglyceride form)",
+      "serving": {
+        "count": 4,
+        "unit": "softgels"
+      },
+      "daily_dose": {
+        "total_omega_3_mg": 1280,
+        "epa_mg": 620,
+        "dha_mg": 480,
+        "other_omega_3_mg": 80
+      }
+    },
+    {
+      "name": "Vitamin D3 + K Complex",
+      "form": "Tablet",
+      "serving": {
+        "count": 1,
+        "unit": "tablet"
+      },
+      "daily_dose": {
+        "vitamin_d3_iu": 2500,
+        "vitamin_d3_mcg": 62.5,
+        "vitamin_k1_mcg": 120,
+        "vitamin_k2_mk4_mcg": 90,
+        "vitamin_k2_mk7_mcg": 30
+      }
+    },
+    {
+      "name": "Ashwagandha",
+      "form": "KSM-66 Capsule",
+      "serving": {
+        "count": 1,
+        "unit": "capsule"
+      },
+      "daily_dose_mg": 600
+    },
+    {
+      "name": "Magnesium Glycinate",
+      "form": "Tablet",
+      "serving": {
+        "count": 4,
+        "unit": "tablets"
+      },
+      "daily_dose_mg": 400
+    },
+    {
+      "name": "Creatine Monohydrate",
+      "form": "Powder",
+      "serving": {
+        "amount_g": 5,
+        "unit": "grams"
+      }
+    }
+  ]
+}

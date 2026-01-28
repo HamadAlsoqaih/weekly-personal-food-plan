@@ -1,0 +1,241 @@
+{
+  "source": "Food - Sheet1.csv",
+  "units": {
+    "calories": "kcal",
+    "protein_g": "g"
+  },
+  "days": [
+    {
+      "day": "Saturday",
+      "meals": [
+        {
+          "meal": "meal1",
+          "name": "Greek yogurt with berries and nuts and honey",
+          "description": "320g greek yogurt, 40g blue berry, 10g mix nuts, 30g honey, 10g pumpkin seeds",
+          "calories": 416.0,
+          "protein_g": 37.6
+        },
+        {
+          "meal": "meal2",
+          "name": "Shawarma",
+          "description": "100g tortila, 20g ketchup, 20g butter, 51 lite mayo, 370 chicken",
+          "calories": 1123.0,
+          "protein_g": 104.9
+        },
+        {
+          "meal": "meal3",
+          "name": "Steak and wedges",
+          "description": "200g striploin steak, 150g wedges",
+          "calories": 714.0,
+          "protein_g": 44.0
+        }
+      ],
+      "daily_total_calories": 2253.0,
+      "daily_total_protein_g": 186.5
+    },
+    {
+      "day": "Sunday",
+      "meals": [
+        {
+          "meal": "meal1",
+          "name": "oats with protien",
+          "description": "150ml milk, 9g honey, 32 choclate protien, 15g peanute butter, 60g oats, 10g chia seeds",
+          "calories": 570.0,
+          "protein_g": 42.5
+        },
+        {
+          "meal": "meal2",
+          "name": "Hot dog pizza",
+          "description": "80g reef bread, 20cal of ketchap and tomato paste, 119g modzarila, 178g beef hotdog",
+          "calories": 797.0,
+          "protein_g": 57.0
+        },
+        {
+          "meal": "meal3",
+          "name": "salmon and wedges",
+          "description": "200g Salmon, 150g wedges",
+          "calories": 642.0,
+          "protein_g": 43.0
+        },
+        {
+          "meal": "meal4",
+          "name": "indomi and chicken",
+          "description": "1pack indome, 200g chicken breast",
+          "calories": 661.0,
+          "protein_g": 47.0
+        }
+      ],
+      "daily_total_calories": 2670.0,
+      "daily_total_protein_g": 189.5
+    },
+    {
+      "day": "Monday",
+      "meals": [
+        {
+          "meal": "meal1",
+          "name": "Greek yogurt with berries and nuts and honey",
+          "description": "320g greek yogurt, 40g blue berry, 10g mix nuts, 30g honey, 10g pumpkin seeds",
+          "calories": 416.0,
+          "protein_g": 37.6
+        },
+        {
+          "meal": "meal2",
+          "name": "Shawarma",
+          "description": "100g tortila, 20g ketchup, 20g butter, 51 lite mayo, 370 chicken",
+          "calories": 1123.0,
+          "protein_g": 104.9
+        },
+        {
+          "meal": "meal3",
+          "name": "Steak and wedges",
+          "description": "200g striploin steak, 150g wedges",
+          "calories": 714.0,
+          "protein_g": 44.0
+        }
+      ],
+      "daily_total_calories": 2253.0,
+      "daily_total_protein_g": 186.5
+    },
+    {
+      "day": "Tuesday",
+      "meals": [
+        {
+          "meal": "meal1",
+          "name": "oats with protien",
+          "description": "150ml milk, 9g honey, 32 choclate protien, 15g peanute butter, 60g oats, 10g chia seeds",
+          "calories": 570.0,
+          "protein_g": 42.5
+        },
+        {
+          "meal": "meal2",
+          "name": "hashi burger",
+          "description": "20g lite mayo, 10g ketchap, 330 hashi beef, 10g butter, 25g red cheddar, 120g toast bread",
+          "calories": 874.0,
+          "protein_g": 88.0
+        },
+        {
+          "meal": "meal3",
+          "name": "salmon and wedges",
+          "description": "200g Salmon, 150g wedges",
+          "calories": 642.0,
+          "protein_g": 43.0
+        },
+        {
+          "meal": "meal4",
+          "name": "junk snack",
+          "description": "if im craving",
+          "calories": 400.0,
+          "protein_g": null
+        }
+      ],
+      "daily_total_calories": 2486.0,
+      "daily_total_protein_g": 173.5
+    },
+    {
+      "day": "Wednesday",
+      "meals": [
+        {
+          "meal": "meal1",
+          "name": "Greek yogurt with berries and nuts and honey",
+          "description": "320g greek yogurt, 40g blue berry, 10g mix nuts, 30g honey, 10g pumpkin seeds",
+          "calories": 416.0,
+          "protein_g": 37.6
+        },
+        {
+          "meal": "meal2",
+          "name": "Hot dog pizza",
+          "description": "80g reef bread, 20cal of ketchap and tomato paste, 119g modzarila, 178g beef hotdog",
+          "calories": 797.0,
+          "protein_g": 57.0
+        },
+        {
+          "meal": "meal3",
+          "name": "Steak and wedges",
+          "description": "200g striploin steak, 150g wedges",
+          "calories": 714.0,
+          "protein_g": 44.0
+        },
+        {
+          "meal": "meal4",
+          "name": "indomi and chicken",
+          "description": "1pack indome, 200g chicken breast",
+          "calories": 661.0,
+          "protein_g": 47.0
+        }
+      ],
+      "daily_total_calories": 2588.0,
+      "daily_total_protein_g": 185.6
+    },
+    {
+      "day": "Thursday",
+      "meals": [
+        {
+          "meal": "meal1",
+          "name": "Turkey and cheese sandwich",
+          "description": "60g toast, 80g smoked roast turkey, 18g emmental cheese",
+          "calories": 304.0,
+          "protein_g": 26.4
+        },
+        {
+          "meal": "meal2",
+          "name": "Shawarma",
+          "description": "100g tortila, 20g ketchup, 20g butter, 51 lite mayo, 370 chicken",
+          "calories": 1123.0,
+          "protein_g": 104.9
+        },
+        {
+          "meal": "meal3",
+          "name": "salmon and wedges",
+          "description": "200g Salmon, 150g wedges",
+          "calories": 642.0,
+          "protein_g": 43.0
+        },
+        {
+          "meal": "meal4",
+          "name": "junk snack",
+          "description": "if im craving",
+          "calories": 400.0,
+          "protein_g": null
+        }
+      ],
+      "daily_total_calories": 2469.0,
+      "daily_total_protein_g": 174.3
+    },
+    {
+      "day": "Friday",
+      "meals": [
+        {
+          "meal": "meal1",
+          "name": "Greek yogurt with berries and nuts and honey",
+          "description": "320g greek yogurt, 40g blue berry, 10g mix nuts, 30g honey, 10g pumpkin seeds",
+          "calories": 416.0,
+          "protein_g": 37.6
+        },
+        {
+          "meal": "meal2",
+          "name": "hashi burger",
+          "description": "20g lite mayo, 10g ketchap, 330 hashi beef, 10g butter, 25g red cheddar, 120g toast bread",
+          "calories": 874.0,
+          "protein_g": 88.0
+        },
+        {
+          "meal": "meal3",
+          "name": "free meal",
+          "description": "going out maximum of, 1800cal can be less",
+          "calories": 1800.0,
+          "protein_g": 80.0
+        }
+      ],
+      "daily_total_calories": 3090.0,
+      "daily_total_protein_g": 205.6
+    }
+  ],
+  "weekly_summary": {
+    "weekly_total_calories_reported": 17809.0,
+    "weekly_total_calories_calculated": 17809.0,
+    "average_daily_calories_reported": 2544.142857,
+    "average_daily_calories_calculated": 2544.1428571428573,
+    "average_daily_protein_g_calculated": 185.92857142857142,
+    "note": "Reported totals/averages are taken from the sheet if present; calculated values are computed from daily totals."
+  }
+}
